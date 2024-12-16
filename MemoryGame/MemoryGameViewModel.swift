@@ -10,10 +10,17 @@ import SwiftUI
 import AVFoundation
 import UIKit
 
+enum Difficulty: String, CaseIterable {
+    case easy = "Fácil"
+    case medium = "Intermedio"
+    case hard = "Difícil"
+}
+
 class MemoryGameViewModel: ObservableObject {
     @Published var cards: [CardModel] = []
     @Published var score: Int = 0
-    
+    @Published var selectedDifficulty: Difficulty = .easy // Nivel inicial
+
     private var flippedCards: [CardModel] = []
     private let animalImages = [
         "lion", "tiger", "elephant", "giraffe", "monkey",
@@ -28,7 +35,21 @@ class MemoryGameViewModel: ObservableObject {
     func setupGame() {
         score = 0
         flippedCards = []
-        let shuffledImages = (animalImages + animalImages).shuffled()
+        
+        // Determinar cuántos animales usar según la dificultad seleccionada
+        let numberOfAnimals: Int
+        switch selectedDifficulty {
+        case .easy:
+            numberOfAnimals = 4
+        case .medium:
+            numberOfAnimals = 7
+        case .hard:
+            numberOfAnimals = 10
+        }
+        
+        // Seleccionar y mezclar los animales
+        let selectedAnimals = Array(animalImages.prefix(numberOfAnimals))
+        let shuffledImages = (selectedAnimals + selectedAnimals).shuffled()
         cards = shuffledImages.map { CardModel(imageName: $0) }
     }
 
