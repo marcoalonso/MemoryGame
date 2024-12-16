@@ -35,20 +35,9 @@ class MemoryGameViewModel: ObservableObject {
     // Inicializa el ViewModel configurando el juego por primera vez
     init() {
         setupGame()
-        playFirstLaunchSound()
+        playSound(named: "welcome") // Reproduce el sonido
     }
     
-    // Reproduce un sonido la primera vez que se abre la app
-    private func playFirstLaunchSound() {
-        let defaults = UserDefaults.standard
-        let hasLaunchedBefore = defaults.bool(forKey: "hasLaunchedBefore") // Verificar si ya se abrió antes
-        
-        if !hasLaunchedBefore {
-            playSound(named: "welcome") // Reproduce el sonido
-            defaults.set(true, forKey: "hasLaunchedBefore") // Marcar como abierto
-        }
-    }
-
     // Configura el juego, mezclando las cartas y reiniciando el estado
     func setupGame() {
         isResetting = true // Activa el estado de reseteo para animaciones

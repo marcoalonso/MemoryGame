@@ -6,6 +6,10 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		6CC179152D10B92100D8F94C /* SDWebImageSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = 6CC179142D10B92100D8F94C /* SDWebImageSwiftUI */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXFileReference section */
 		6CC178EA2D108F0700D8F94C /* MemoryGame.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MemoryGame.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -23,6 +27,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6CC179152D10B92100D8F94C /* SDWebImageSwiftUI in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -65,6 +70,7 @@
 			);
 			name = MemoryGame;
 			packageProductDependencies = (
+				6CC179142D10B92100D8F94C /* SDWebImageSwiftUI */,
 			);
 			productName = MemoryGame;
 			productReference = 6CC178EA2D108F0700D8F94C /* MemoryGame.app */;
@@ -94,6 +100,9 @@
 			);
 			mainGroup = 6CC178E12D108F0700D8F94C;
 			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				6CC179132D10B92100D8F94C /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */,
+			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 6CC178EB2D108F0700D8F94C /* Products */;
 			projectDirPath = "";
@@ -324,6 +333,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		6CC179132D10B92100D8F94C /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SDWebImage/SDWebImageSwiftUI";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 3.1.3;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		6CC179142D10B92100D8F94C /* SDWebImageSwiftUI */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 6CC179132D10B92100D8F94C /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */;
+			productName = SDWebImageSwiftUI;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 6CC178E22D108F0700D8F94C /* Project object */;
 }
