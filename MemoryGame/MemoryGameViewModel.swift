@@ -17,7 +17,7 @@ class MemoryGameViewModel: ObservableObject {
     private var flippedCards: [CardModel] = []
     private let animalImages = [
         "lion", "tiger", "elephant", "giraffe", "monkey",
-        "zebra", "panda", "fox"
+        "zebra", "panda", "fox", "dog", "cat"
     ]
     private var audioPlayer: AVAudioPlayer?
 
@@ -61,7 +61,6 @@ class MemoryGameViewModel: ObservableObject {
                 self.unflipCards([firstCard, secondCard])
                 self.playSound(named: "no_match")
                 self.triggerHapticFeedback(type: .error)
-                self.score -= 2
             }
             self.flippedCards = []
         }

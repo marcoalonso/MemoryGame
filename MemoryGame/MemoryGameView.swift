@@ -17,12 +17,12 @@ struct MemoryGameView: View {
     var body: some View {
         VStack {
             Text("Memory Game")
-                .font(.largeTitle)
-                .padding()
-            
+                .font(.title)
+                
             Text("Score: \(viewModel.score)")
-                .font(.headline)
-                .padding(.bottom)
+                .font(.title2)
+                .foregroundStyle(.green)
+            
             
             LazyVGrid(columns: columns, spacing: 16) {
                 ForEach(viewModel.cards) { card in
