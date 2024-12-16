@@ -12,6 +12,7 @@ struct CardModel: Identifiable {
     let imageName: String
     var isFlipped: Bool = false
     var isMatched: Bool = false
+    var flipCount: Int = 0 
 }
 
 
