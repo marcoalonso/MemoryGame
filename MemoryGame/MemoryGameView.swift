@@ -15,7 +15,7 @@ struct MemoryGameView: View {
     ]
     
     var body: some View {
-        ScrollView { // Agregamos el ScrollView
+        ScrollView {
             VStack {
                 
                 
@@ -27,10 +27,13 @@ struct MemoryGameView: View {
                     .font(.headline)
                     .padding(.bottom)
                 
-                // Grid de cartas
+                // Grid de cartas con animación
                 LazyVGrid(columns: columns, spacing: 16) {
                     ForEach(viewModel.cards) { card in
                         CardView(card: card)
+                            .opacity(viewModel.isResetting ? 0 : 1) // Animar opacidad
+                            .scaleEffect(viewModel.isResetting ? 0.5 : 1) // Escalar durante el reseteo
+                            .animation(.easeInOut(duration: 0.3), value: viewModel.isResetting)
                             .onTapGesture {
                                 viewModel.flipCard(card)
                             }
@@ -38,14 +41,17 @@ struct MemoryGameView: View {
                 }
                 .padding()
                 
-                // Botón de reinicio
-                Button("Restart Game") {
+                // Botón de reinicio con imagen
+                Button(action: {
                     viewModel.setupGame()
+                }) {
+                    Image("replayButton") // Usar la imagen de Assets
+                        .resizable()
+                        .scaledToFit()
+                        .frame(width: 250, height: 60) // Tamaño del botón
+                        .padding()
                 }
-                .padding()
-                .background(Color.green)
-                .foregroundColor(.white)
-                .cornerRadius(8)
+                .buttonStyle(PlainButtonStyle()) // Evitar estilo predeterminado
                 
                 // Selector de dificultad
                 Picker("Dificultad", selection: $viewModel.selectedDifficulty) {
@@ -55,11 +61,11 @@ struct MemoryGameView: View {
                 }
                 .pickerStyle(SegmentedPickerStyle())
                 .padding()
-                .onChange(of: viewModel.selectedDifficulty) { _ in
+                .onChange(of: viewModel.selectedDifficulty) { _, _ in
                     viewModel.setupGame() // Reiniciar el juego al cambiar de dificultad
                 }
             }
-            .frame(maxWidth: .infinity) // Asegura que el contenido ocupe todo el ancho disponible
+            .frame(maxWidth: .infinity)
         }
     }
 }
