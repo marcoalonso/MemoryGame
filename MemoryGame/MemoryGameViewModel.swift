@@ -145,7 +145,7 @@ class MemoryGameViewModel: ObservableObject {
 
     // Reproduce un sonido (éxito o error) usando un archivo de audio
     private func playSound(named soundName: String) {
-        guard let soundURL = Bundle.main.url(forResource: soundName, withExtension: "wav") else { return }
+        guard let soundURL = Bundle.main.url(forResource: soundName, withExtension: "mp3") else { return }
         do {
             audioPlayer = try AVAudioPlayer(contentsOf: soundURL)
             audioPlayer?.play()
